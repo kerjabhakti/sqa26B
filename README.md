@@ -65,7 +65,7 @@ Salah satu dokumen terpenting yang harus dibuat oleh tim QA adalah rencana pengu
 
 Bagian dan konten rencana pengujian dapat bervariasi berdasarkan proyek dan sifat pengiriman, oleh karena itu, PDF rencana pengujian terlampir dianggap sebagai yang umum yang melayani semua tujuan pengiriman pengujian perangkat lunak.
 
-PDF terlampir dapat ditemukan di sini [dokumen test plan](https://github.com/rplulbi/SQA/blob/main/Chapter2/Test_Plan_Sample.pdf) untuk diunduh.
+PDF terlampir dapat ditemukan di sini [dokumen test plan](https://github.com/kerjabhakti/sqa26B/blob/main/TugasSelenium/Test_Plan_Sample.pdf) untuk diunduh.
 
 ## The Road Map
 
