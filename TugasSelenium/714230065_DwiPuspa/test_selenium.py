@@ -3,27 +3,26 @@ from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.common.keys import Keys
 
-# Inisialisasi WebDriver
-driver = webdriver.Chrome()
+# Menyiapkan dan membuka browser Chrome
+browser = webdriver.Chrome()
 
-# Membuka halaman web Google
-driver.get("https://www.google.com")
+# Mengakses halaman utama Wikipedia Bahasa Indonesia
+browser.get("https://id.wikipedia.org/")
 
-# Mencari elemen input pencarian menggunakan atribut NAME
-search_input = driver.find_element(By.NAME, "q")
+#  Menemukan kolom pencarian Wikipedia (menggunakan atribut NAME "search")
+kolom_pencarian = browser.find_element(By.NAME, "search")
 
-# Memasukkan kata kunci pencarian
-search_input.send_keys("kampus digital masa gitu")
+kata_kunci = "Pengujian perangkat lunak"
+kolom_pencarian.send_keys(kata_kunci)
 
-# Menekan tombol Enter untuk melakukan pencarian
-search_input.send_keys(Keys.ENTER)
+# Menyimulasikan penekanan tombol Enter pada keyboard
+kolom_pencarian.send_keys(Keys.RETURN)
 
-# Tambahkan penundaan waktu untuk melihat hasil pencarian
-time.sleep(5)
+time.sleep(4)
 
-# Dapatkan judul halaman saat ini
-page_title = driver.title
-print("Pengujian Berhasil! Judul halaman saat ini:", page_title)
+# Mencari elemen judul artikel utama (menggunakan ID "firstHeading") dan mengambil teksnya
+judul_artikel = browser.find_element(By.ID, "firstHeading").text
 
-# Menutup WebDriver
-driver.quit()
+print(f"✨ Pengujian Sukses! Artikel yang berhasil dibuka berjudul: '{judul_artikel}'")
+
+browser.quit()
