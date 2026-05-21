@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Form Input Buku</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        background-color: #f4f4f9;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+      }
+
+      .container {
+        background: #ffffff;
+        padding: 30px;
+        border-radius: 10px;
+        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+        max-width: 400px;
+        width: 100%;
+        box-sizing: border-box;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .container h1 {
+        font-size: 24px;
+        text-align: center;
+        margin-bottom: 20px;
+        color: #333333;
+      }
+
+      label {
+        display: block;
+        font-weight: bold;
+        margin-bottom: 8px;
+        color: #555555;
+        width: 100%;
+      }
+
+      input[type="text"],
+      input[type="number"],
+      button {
+        width: 100%;
+        padding: 10px;
+        margin-bottom: 20px;
+        border: 1px solid #cccccc;
+        border-radius: 5px;
+        box-sizing: border-box;
+        font-size: 14px;
+      }
+
+      input[type="text"]:focus,
+      input[type="number"]:focus {
+        border-color: #007bff;
+        outline: none;
+        box-shadow: 0 0 3px #007bff;
+      }
+
+      button {
+        background-color: #007bff;
+        color: white;
+        font-weight: bold;
+        border: none;
+        cursor: pointer;
+        transition: background-color 0.3s;
+      }
+
+      button:hover {
+        background-color: #0056b3;
+      }
+
+      .description {
+        text-align: center;
+        font-size: 14px;
+        margin-bottom: 20px;
+        color: #666666;
+        line-height: 1.5;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1>Form Input Buku</h1>
+      <p class="description">
+        Silakan masukkan informasi buku yang ingin ditambahkan ke dalam
+        database. Pastikan semua data diisi dengan benar sebelum disimpan.
+      </p>
+      <form action="/add" method="POST" id="bukuForm">
+        <label for="judul">Judul Buku:</label>
+        <input
+          type="text"
+          id="judul"
+          name="judul"
+          placeholder="Masukkan judul buku"
+          required
+        />
+
+        <label for="penulis">Penulis:</label>
+        <input
+          type="text"
+          id="penulis"
+          name="penulis"
+          placeholder="Masukkan nama penulis"
+          required
+        />
+
+        <label for="tahun_terbit">Tahun Terbit:</label>
+        <input
+          type="number"
+          id="tahun_terbit"
+          name="tahun_terbit"
+          placeholder="Masukkan tahun terbit"
+          required
+          min="1900"
+          max="2025"
+        />
+
+        <button type="submit">Simpan</button>
+      </form>
+    </div>
+
+    <script>
+      document.getElementById("bukuForm").addEventListener("submit", function (e) {
+        const judul = document.getElementById("judul").value.trim();
+        const penulis = document.getElementById("penulis").value.trim();
+        const tahunTerbit = parseInt(
+          document.getElementById("tahun_terbit").value
+        );
+
+        let errorMessage = "";
+        if (judul === "") {
+          errorMessage += "Judul buku tidak boleh kosong.\n";
+        }
+        if (penulis === "") {
+          errorMessage += "Nama penulis tidak boleh kosong.\n";
+        }
+
+        if (isNaN(tahunTerbit) || tahunTerbit < 1900 || tahunTerbit > 2025) {
+          errorMessage += "Tahun terbit harus antara 1900 dan 2025.\n";
+        }
+        if (errorMessage !== "") {
+          e.preventDefault(); // Batalkan submit form
+          alert(errorMessage);
+        }
+      });
+    </script>
+  </body>
+</html>
