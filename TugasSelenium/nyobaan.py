@@ -10,7 +10,7 @@ driver = webdriver.Chrome()
 driver.get("https://www.google.com")
 
 # Mencari elemen input pencarian menggunakan ID
-search_input = driver.find_element(By.NAME, "q")
+search_input = driver.find_element(By.ID, "APjFqb")
 
 # Memasukkan kata kunci pencarian
 search_input.send_keys("kampus digital masa gitu")
